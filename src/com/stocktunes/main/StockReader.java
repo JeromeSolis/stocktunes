@@ -23,9 +23,25 @@ public class StockReader {
 		stockList.add(0, sdf.format(cal.getTime()));
 		System.out.println(stockList.toString());
 		
+		/*
+		 * stockList[0] = Date & time of resquest
+		 * stockList[1] = Symbol
+		 * stockList[2] = Last trade (price only)
+		 * stockList[3] = Last trade date
+		 * stockList[4] = Last trade time
+		 * stockList[5] = Change
+		 * stockList[6] = Open pricing
+		 * stockList[7] = Day's high
+		 * stockList[8] = Day's low
+		 * stockList[9] = Volume
+		 */
+		
+		sdf = new SimpleDateFormat("yyyyMMdd");
+		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 		BufferedWriter bw = null;
 		try {
-			File file = new File("quotes/"+stockList.get(1).toString().substring(1, stockList.get(1).toString().length()-1)+".csv");
+			File file = new File("quotes/"+stockList.get(1).toString().substring(1, stockList.get(1).toString().length()-1)+
+					"_"+sdf.format(cal.getTime())+".csv"); // CSV file = SYMBOL_DATE.csv
 			if (!file.exists())
 				file.createNewFile();
 			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
