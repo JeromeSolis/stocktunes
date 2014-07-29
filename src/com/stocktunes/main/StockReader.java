@@ -1,4 +1,4 @@
-package com.stockforecast.main;
+package com.stocktunes.main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 
-import com.stockforecast.tools.URLConnectionReader;
+import com.stocktunes.tools.URLConnectionReader;
 
 public class StockReader {
 	public static void main(String[] args) throws Exception {

@@ -1,4 +1,4 @@
-package com.stockforecast.tools;
+package com.stocktunes.tools;
 
 import java.net.*;
 import java.io.*;
