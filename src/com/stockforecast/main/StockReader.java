@@ -22,5 +22,22 @@ public class StockReader {
 		List<String> stockList = new ArrayList<String>(Arrays.asList(content.split(",")));
 		stockList.add(0, sdf.format(cal.getTime()));
 		System.out.println(stockList.toString());
+		
+		BufferedWriter bw = null;
+		try {
+			File file = new File("quotes/"+stockList.get(1).toString().substring(1, stockList.get(1).toString().length()-1)+".csv");
+			if (!file.exists())
+				file.createNewFile();
+			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+			bw = new BufferedWriter(fw);
+			bw.write(stockList.toString().replace("[", "").replace("]", "").replace(", ", ",")+"\r\n");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				bw.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 }
